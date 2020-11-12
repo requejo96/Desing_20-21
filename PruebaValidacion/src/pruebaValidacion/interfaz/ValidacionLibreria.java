@@ -6,6 +6,8 @@
 package pruebaValidacion.interfaz;
 
 import java.util.Locale;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
 import org.netbeans.validation.api.ui.ValidationGroup;
 
@@ -20,10 +22,23 @@ public class ValidacionLibreria extends javax.swing.JFrame {
      */
     public ValidacionLibreria() {
         initComponents();
-        
+        jButtonAceptar.setEnabled(false);
         ValidationGroup group = validationPanel.getValidationGroup();
         group.add(jTextFieldNombre, StringValidators.REQUIRE_NON_EMPTY_STRING);
         group.add(jTextFieldEdad, StringValidators.REQUIRE_VALID_INTEGER);
+        
+        validationPanel.addChangeListener(new ChangeListener(){
+            @Override
+            public void stateChanged(ChangeEvent e) {
+            
+                if(validationPanel.getProblem() == null) 
+                   jButtonAceptar.setEnabled(true);
+               else
+                   jButtonAceptar.setEnabled(false);
+                
+            }
+        
+        });
         
     }
 
