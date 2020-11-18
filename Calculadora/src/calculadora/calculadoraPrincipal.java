@@ -86,6 +86,11 @@ public class calculadoraPrincipal extends javax.swing.JFrame {
         });
 
         jButtonPosNeg.setText("POS/NEG");
+        jButtonPosNeg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPosNegActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -226,8 +231,38 @@ public class calculadoraPrincipal extends javax.swing.JFrame {
         jTextFieldNum2.setText("");
         jTextFieldNum1.setText("");
         jTextFieldResultado.setText("");
+        jButtonPosNeg.setEnabled(true);
         
     }//GEN-LAST:event_jButtonLimpiarActionPerformed
+
+    private void jButtonPosNegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPosNegActionPerformed
+        // TODO add your handling code here:
+        
+        double cambio = Double.parseDouble(jTextFieldResultado.getText());
+        double result = 0;
+        
+        if (cambio < 0) {
+            
+            result = cambio - cambio - cambio;
+            
+        } 
+        if (cambio > 0) {
+            
+            result = cambio - cambio - cambio;
+            
+        }
+        if (cambio == 0) {
+            
+            result = 0;
+            
+        }
+        
+        jTextFieldResultado.setText("");
+        jTextFieldResultado.setText(String.valueOf(result));
+        jButtonPosNeg.setEnabled(false);
+
+        
+    }//GEN-LAST:event_jButtonPosNegActionPerformed
 
     /**
      * @param args the command line arguments

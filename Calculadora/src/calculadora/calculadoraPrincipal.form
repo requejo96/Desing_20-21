@@ -171,6 +171,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="POS/NEG"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPosNegActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
