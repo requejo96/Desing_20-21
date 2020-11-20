@@ -30,17 +30,17 @@ public class NewJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanelImagen1.setRutaImagen("");
+        jPanelImagen1.setRutaImagen(new java.io.File("C:\\Users\\Requejo\\Desktop\\descarga.jpg"));
 
         javax.swing.GroupLayout jPanelImagen1Layout = new javax.swing.GroupLayout(jPanelImagen1);
         jPanelImagen1.setLayout(jPanelImagen1Layout);
         jPanelImagen1Layout.setHorizontalGroup(
             jPanelImagen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 189, Short.MAX_VALUE)
+            .addGap(0, 299, Short.MAX_VALUE)
         );
         jPanelImagen1Layout.setVerticalGroup(
             jPanelImagen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 168, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -48,16 +48,16 @@ public class NewJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addComponent(jPanelImagen1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addComponent(jPanelImagen1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addGap(54, 54, 54)
                 .addComponent(jPanelImagen1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         pack();
