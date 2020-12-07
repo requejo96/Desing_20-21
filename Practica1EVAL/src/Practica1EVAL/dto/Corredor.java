@@ -12,7 +12,7 @@ import java.util.Date;
  *
  * @author Requejo
  */
-public class Corredores {
+public class Corredor {
     
     private String nombre;
     private String DNI;
@@ -21,7 +21,7 @@ public class Corredores {
     private String telefonoContacto;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
-    public Corredores(String nombre, String DNI, Date fechaNacimiento, String direccion, String telefonoContacto) {
+    public Corredor(String nombre, String DNI, Date fechaNacimiento, String direccion, String telefonoContacto) {
         this.nombre = nombre;
         this.DNI = DNI;
         this.fechaNacimiento = fechaNacimiento;
@@ -71,7 +71,7 @@ public class Corredores {
     
     public String[] toArrayString()
     {
-      String[] s = new String[4];
+      String[] s = new String[5];
       s[0] = nombre;
       s[1] = DNI;
       s[2] = sdf.format(fechaNacimiento);

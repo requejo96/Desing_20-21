@@ -5,20 +5,46 @@
  */
 package Practica1EVAL.gui;
 
+import Practica1EVAL.dto.Corredor;
+import Practica1EVAL.logica.LogicaNegocio;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Requejo
  */
-public class PantallaPrincipal extends javax.swing.JDialog {
+public class PantallaPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form PantallaPrincipal
      */
-    public PantallaPrincipal(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public PantallaPrincipal() {
         initComponents();
+        refrescarTablaCorredores();
+        
     }
-
+    
+    private void refrescarTablaCorredores()
+    {
+    
+        DefaultTableModel dtm = new DefaultTableModel();
+        dtm.setColumnIdentifiers(new String[]{"Nombre","DNI","Fecha Nacimiento","Direccion","Telf. Contacto"});
+        
+        List<Corredor> listaCorredores = LogicaNegocio.getListaCorredores();
+        
+        for(Corredor corredor : listaCorredores)
+        {
+        
+            dtm.addRow(corredor.toArrayString());
+        
+        }
+        
+        jTableCorredores.setModel(dtm);
+    
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,21 +54,67 @@ public class PantallaPrincipal extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jScrollPaneCorredores = new javax.swing.JScrollPane();
+        jTableCorredores = new javax.swing.JTable();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuPrincipal = new javax.swing.JMenu();
+        jMenuItemAddCorredor = new javax.swing.JMenuItem();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTableCorredores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPaneCorredores.setViewportView(jTableCorredores);
+
+        jMenuPrincipal.setText("Corredor");
+
+        jMenuItemAddCorredor.setText("Añadir...");
+        jMenuItemAddCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAddCorredorActionPerformed(evt);
+            }
+        });
+        jMenuPrincipal.add(jMenuItemAddCorredor);
+
+        jMenuBar1.add(jMenuPrincipal);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPaneCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 1019, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPaneCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 305, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItemAddCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAddCorredorActionPerformed
+        
+        JDialogAddCorredor dialogoCorredor = new JDialogAddCorredor(this, true);
+        
+        dialogoCorredor.setVisible(true);
+        refrescarTablaCorredores();
+        
+    }//GEN-LAST:event_jMenuItemAddCorredorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -71,21 +143,19 @@ public class PantallaPrincipal extends javax.swing.JDialog {
         }
         //</editor-fold>
 
-        /* Create and display the dialog */
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PantallaPrincipal dialog = new PantallaPrincipal(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                new PantallaPrincipal().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemAddCorredor;
+    private javax.swing.JMenu jMenuPrincipal;
+    private javax.swing.JScrollPane jScrollPaneCorredores;
+    private javax.swing.JTable jTableCorredores;
     // End of variables declaration//GEN-END:variables
 }

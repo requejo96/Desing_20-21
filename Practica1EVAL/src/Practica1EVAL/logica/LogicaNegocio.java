@@ -5,10 +5,32 @@
  */
 package Practica1EVAL.logica;
 
+import Practica1EVAL.dto.Corredor;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Requejo
  */
 public class LogicaNegocio {
     
+    //corredores
+    private static List<Corredor> listaCorredores = new ArrayList<>();
+    
+    public static void addCliente(Corredor corredor)
+    {
+    
+        listaCorredores.add(corredor);
+    
+    }
+    
+    public static List<Corredor> getListaCorredores() 
+    {
+        
+        return listaCorredores;
+        
+    }
+    
+    //carreras
 }
