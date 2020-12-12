@@ -5,7 +5,6 @@
  */
 package Practica1EVAL.logica;
 
-import Practica1EVAL.dto.Carreras;
 import Practica1EVAL.dto.Corredor;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +17,8 @@ public class LogicaNegocio {
     
     //corredores
     private static List<Corredor> listaCorredores = new ArrayList<>();
-    private static List<Carreras> listaCarreras = new ArrayList<>();
     
-    public static void addCorredor(Corredor corredor)
+    public static void addCliente(Corredor corredor)
     {
     
         listaCorredores.add(corredor);
@@ -34,15 +32,5 @@ public class LogicaNegocio {
         
     }
     
-    public static void addCarrera(Carreras carrera)
-    {
-        listaCarreras.add(carrera);
-    }
-    
-    public static List<Carreras> getListaCarreras()
-    {
-        return listaCarreras;
-    }
-    
-
+    //carreras
 }

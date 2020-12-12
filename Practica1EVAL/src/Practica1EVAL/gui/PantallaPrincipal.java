@@ -5,6 +5,7 @@
  */
 package Practica1EVAL.gui;
 
+import Practica1EVAL.dto.Carreras;
 import Practica1EVAL.dto.Corredor;
 import Practica1EVAL.logica.LogicaNegocio;
 import java.util.List;
@@ -22,6 +23,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     public PantallaPrincipal() {
         initComponents();
         refrescarTablaCorredores();
+        refrescarTablaCarreras();
         
     }
     
@@ -44,6 +46,22 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     
     }
     
+    private void refrescarTablaCarreras()
+    {
+        DefaultTableModel dtm = new DefaultTableModel();
+        dtm.setColumnIdentifiers(new String[]{"Nombre","Fecha","Lugar","NºParticpantes"});
+        
+         List<Carreras> listaCarreras = LogicaNegocio.getListaCarreras();
+        
+        for (Carreras carrera: listaCarreras)
+            
+            dtm.addRow(carrera.toArrayString());
+        
+        jTableCarreras.setModel(dtm);
+    }
+    
+    
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,11 +72,28 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPanel2 = new javax.swing.JPanel();
         jScrollPaneCorredores = new javax.swing.JScrollPane();
         jTableCorredores = new javax.swing.JTable();
+        jScrollPaneCarreras = new javax.swing.JScrollPane();
+        jTableCarreras = new javax.swing.JTable();
+        jButtonEliminarCorredor = new javax.swing.JButton();
+        jButtonEliminarCarrera = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuCarrera = new javax.swing.JMenu();
+        jMenuItemAddCarrera = new javax.swing.JMenuItem();
         jMenuPrincipal = new javax.swing.JMenu();
         jMenuItemAddCorredor = new javax.swing.JMenuItem();
+
+        jMenu1.setText("File");
+        jMenuBar2.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar2.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +109,79 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
         ));
         jScrollPaneCorredores.setViewportView(jTableCorredores);
+
+        jTableCarreras.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPaneCarreras.setViewportView(jTableCarreras);
+
+        jButtonEliminarCorredor.setText("Eliminar");
+        jButtonEliminarCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarCorredorActionPerformed(evt);
+            }
+        });
+
+        jButtonEliminarCarrera.setText("Eliminar");
+        jButtonEliminarCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarCarreraActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPaneCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 1019, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 1019, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(65, 65, 65)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonEliminarCorredor)
+                    .addComponent(jButtonEliminarCarrera))
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPaneCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jButtonEliminarCarrera)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(jButtonEliminarCorredor))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jScrollPaneCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(218, Short.MAX_VALUE))
+        );
+
+        jMenuCarrera.setText("Carreras");
+
+        jMenuItemAddCarrera.setText("Añadir...");
+        jMenuItemAddCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAddCarreraActionPerformed(evt);
+            }
+        });
+        jMenuCarrera.add(jMenuItemAddCarrera);
+
+        jMenuBar1.add(jMenuCarrera);
 
         jMenuPrincipal.setText("Corredor");
 
@@ -93,15 +201,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPaneCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 1019, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPaneCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 305, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -116,7 +220,33 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItemAddCorredorActionPerformed
 
+    private void jMenuItemAddCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAddCarreraActionPerformed
+         JDialogAddCarrera dialogoCarrera = new JDialogAddCarrera(this, true);
+        
+        dialogoCarrera.setVisible(true);
+        refrescarTablaCarreras();
+    }//GEN-LAST:event_jMenuItemAddCarreraActionPerformed
+
+    private void jButtonEliminarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarCorredorActionPerformed
+
+          int selectedCorredor = jTableCorredores.convertRowIndexToModel(jTableCorredores.getSelectedRow());
+          LogicaNegocio.getListaCorredores().remove(selectedCorredor);
+        
+          refrescarTablaCorredores();
+    }//GEN-LAST:event_jButtonEliminarCorredorActionPerformed
+
+    private void jButtonEliminarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarCarreraActionPerformed
+        int selectedCarrera = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
+          LogicaNegocio.getListaCarreras().remove(selectedCarrera);
+        
+          refrescarTablaCarreras();
+    }//GEN-LAST:event_jButtonEliminarCarreraActionPerformed
+
+    
+                                                
     /**
+     * 
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -152,10 +282,21 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonEliminarCarrera;
+    private javax.swing.JButton jButtonEliminarCorredor;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenu jMenuCarrera;
+    private javax.swing.JMenuItem jMenuItemAddCarrera;
     private javax.swing.JMenuItem jMenuItemAddCorredor;
     private javax.swing.JMenu jMenuPrincipal;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPaneCarreras;
     private javax.swing.JScrollPane jScrollPaneCorredores;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JTable jTableCarreras;
     private javax.swing.JTable jTableCorredores;
     // End of variables declaration//GEN-END:variables
 }

@@ -29,8 +29,6 @@ public class Corredor {
         this.telefonoContacto = telefonoContacto;
     }
 
- 
-
     public String getNombre() {
         return nombre;
     }
