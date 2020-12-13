@@ -19,16 +19,28 @@ public class Corredor {
     private Date fechaNacimiento;
     private String direccion;
     private String telefonoContacto;
+    private int dorsal;
+    private String marca;
+    private String carrera;
+
+   
+    
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
-    public Corredor(String nombre, String DNI, Date fechaNacimiento, String direccion, String telefonoContacto) {
+    public Corredor(String nombre, String DNI, Date fechaNacimiento, String direccion, String telefonoContacto, int dorsal, String carrera, String marca) {
         this.nombre = nombre;
         this.DNI = DNI;
         this.fechaNacimiento = fechaNacimiento;
         this.direccion = direccion;
         this.telefonoContacto = telefonoContacto;
+        this.dorsal = dorsal;
+        this.carrera = carrera;
+        this.marca = marca;
     }
 
+
+
+ 
  
 
     public String getNombre() {
@@ -70,15 +82,43 @@ public class Corredor {
     public void setTelefonoContacto(String telefonoContacto) {
         this.telefonoContacto = telefonoContacto;
     }
+  
+    
+    public int getDorsal() {
+        return dorsal;
+    }
+
+    public void setDorsal(int dorsal) {
+        this.dorsal = dorsal;
+    }
+
+    public String getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
     
     public String[] toArrayString()
     {
-      String[] s = new String[5];
+      String[] s = new String[8];
       s[0] = nombre;
       s[1] = DNI;
       s[2] = sdf.format(fechaNacimiento);
       s[3] = direccion;
       s[4] = telefonoContacto;
+      s[5] = Integer.toString(dorsal);
+      s[6] = carrera;
+      s[7] = marca;
       
       return s;
       

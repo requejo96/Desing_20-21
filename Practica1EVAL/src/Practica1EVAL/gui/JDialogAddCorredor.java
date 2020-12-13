@@ -36,12 +36,13 @@ public class JDialogAddCorredor extends javax.swing.JDialog {
         initComponents();
         
          jButtonAlta.setEnabled(false);
-        
+         
         ValidationGroup group = validationPanelCorredor.getValidationGroup();
         group.add(jTextFieldNombre, StringValidators.REQUIRE_NON_EMPTY_STRING);
         group.add(jTextFieldDNI, StringValidators.REQUIRE_NON_EMPTY_STRING);
         group.add(jTextFieldDireccion, StringValidators.REQUIRE_NON_EMPTY_STRING);
         group.add(jTextFieldTelefono, StringValidators.REQUIRE_NON_EMPTY_STRING);
+      
         
         validationPanelCorredor.addChangeListener(new ChangeListener() {
             @Override
@@ -262,7 +263,12 @@ public class JDialogAddCorredor extends javax.swing.JDialog {
         Date FeNac = (Date)jSpinnerFeNac.getValue();
         String telefono = jTextFieldTelefono.getText();
         String direccion = jTextFieldDireccion.getText();
-        Corredor corredor = new Corredor(nombre, DNI, FeNac, direccion, telefono);
+        int dorsal = (Integer)jSpinnerDorsal.getValue();
+        String carrera = jListCarreras.getSelectedValue();
+            
+        
+        String marca = "Sin marca";
+        Corredor corredor = new Corredor(nombre, DNI, FeNac, direccion, telefono,dorsal,carrera, marca);
         
         LogicaNegocio.addCorredor(corredor);
         

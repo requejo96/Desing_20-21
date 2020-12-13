@@ -8,6 +8,9 @@ package Practica1EVAL.gui;
 import Practica1EVAL.dto.Carreras;
 import Practica1EVAL.dto.Corredor;
 import Practica1EVAL.logica.LogicaNegocio;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,6 +27,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         initComponents();
         refrescarTablaCorredores();
         refrescarTablaCarreras();
+         jButtonAceptarCorredor.setEnabled(false);
+          jButtonAceptar.setEnabled(false);
+       
         
     }
     
@@ -31,7 +37,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     {
     
         DefaultTableModel dtm = new DefaultTableModel();
-        dtm.setColumnIdentifiers(new String[]{"Nombre","DNI","Fecha Nacimiento","Direccion","Telf. Contacto"});
+        dtm.setColumnIdentifiers(new String[]{"Nombre","DNI","Fecha Nacimiento","Direccion","Telf. Contacto","Dorsal","Carrera","Marca"});
         
         List<Corredor> listaCorredores = LogicaNegocio.getListaCorredores();
         
@@ -60,6 +66,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jTableCarreras.setModel(dtm);
     }
     
+   
     
     
     
@@ -83,6 +90,34 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jTableCarreras = new javax.swing.JTable();
         jButtonEliminarCorredor = new javax.swing.JButton();
         jButtonEliminarCarrera = new javax.swing.JButton();
+        editCarreraNombre = new javax.swing.JTextField();
+        editCarreraLugar = new javax.swing.JTextField();
+        editCarreraParticipantes = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jButtonEditarCarrera = new javax.swing.JButton();
+        editCarreraFecha = new javax.swing.JTextField();
+        jButtonAceptar = new javax.swing.JButton();
+        filaSeleccionada = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        editarCorredorNombre = new javax.swing.JTextField();
+        editarCorredorDNI = new javax.swing.JTextField();
+        editarCorredorFecha = new javax.swing.JTextField();
+        editarCorredorDireccion = new javax.swing.JTextField();
+        editarCorredorTelefono = new javax.swing.JTextField();
+        editarCorredorDorsal = new javax.swing.JTextField();
+        editarCorredorCarrera = new javax.swing.JTextField();
+        jButtonAceptarCorredor = new javax.swing.JButton();
+        filaSeleccionadaCorredor = new javax.swing.JTextField();
+        jButtonEditarCorredor = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCarrera = new javax.swing.JMenu();
         jMenuItemAddCarrera = new javax.swing.JMenuItem();
@@ -137,38 +172,201 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Nombre");
+
+        jLabel2.setText("Participantes");
+
+        jLabel3.setText("Lugar");
+
+        jLabel4.setText("Fecha");
+
+        jButtonEditarCarrera.setText("Editar");
+        jButtonEditarCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarCarreraActionPerformed(evt);
+            }
+        });
+
+        jButtonAceptar.setText("Aceptar");
+        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarActionPerformed(evt);
+            }
+        });
+
+        filaSeleccionada.setEditable(false);
+
+        jLabel5.setText("Nombre");
+
+        jLabel6.setText("DNI");
+
+        jLabel7.setText("FechaNac");
+
+        jLabel8.setText("Direccion");
+
+        jLabel9.setText("Telefono");
+
+        jLabel10.setText("Dorsal");
+
+        jLabel11.setText("Carrera");
+
+        jButtonAceptarCorredor.setText("Aceptar");
+        jButtonAceptarCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarCorredorActionPerformed(evt);
+            }
+        });
+
+        filaSeleccionadaCorredor.setEditable(false);
+
+        jButtonEditarCorredor.setText("Editar");
+        jButtonEditarCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarCorredorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 1019, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPaneCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 1019, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPaneCorredores, javax.swing.GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE)
+                            .addComponent(jScrollPaneCarreras))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonEliminarCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonEliminarCorredor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonEditarCorredor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonEditarCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(editCarreraNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(editCarreraParticipantes, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(86, 86, 86)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(editCarreraLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(editCarreraFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(72, 72, 72)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonEliminarCorredor)
-                    .addComponent(jButtonEliminarCarrera))
-                .addContainerGap(96, Short.MAX_VALUE))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(editarCorredorDNI, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                        .addComponent(editarCorredorNombre))
+                    .addComponent(editarCorredorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(111, 111, 111)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addGap(53, 53, 53)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(editarCorredorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(editarCorredorDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel11))
+                    .addComponent(editarCorredorDorsal, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(editarCorredorCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jButtonAceptarCorredor)
+                        .addGap(18, 18, 18)
+                        .addComponent(filaSeleccionadaCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(257, 257, 257))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonAceptar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(filaSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(345, 345, 345))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
+                        .addGap(38, 38, 38)
+                        .addComponent(jButtonEditarCarrera)
+                        .addGap(38, 38, 38)
                         .addComponent(jButtonEliminarCarrera)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editCarreraNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addComponent(editCarreraLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAceptar)
+                    .addComponent(filaSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(editCarreraParticipantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editCarreraFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(jButtonEliminarCorredor))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jScrollPaneCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(218, Short.MAX_VALUE))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jScrollPaneCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(17, 17, 17))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButtonEditarCorredor)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonEliminarCorredor)
+                                .addGap(42, 42, 42)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(editarCorredorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(editarCorredorDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel5)
+                            .addComponent(editarCorredorCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel9)
+                            .addComponent(editarCorredorDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(editarCorredorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonAceptarCorredor)
+                            .addComponent(filaSeleccionadaCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel10)
+                    .addComponent(editarCorredorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editarCorredorDorsal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         jMenuCarrera.setText("Carreras");
@@ -201,11 +399,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 22, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -242,7 +442,99 @@ public class PantallaPrincipal extends javax.swing.JFrame {
           refrescarTablaCarreras();
     }//GEN-LAST:event_jButtonEliminarCarreraActionPerformed
 
+    private void jButtonEditarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarCarreraActionPerformed
+        jButtonAceptar.setEnabled(true);
+           int selectedCarrera = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
+         
+           editCarreraNombre.setText(jTableCarreras.getValueAt(selectedCarrera, 0).toString());
+           editCarreraFecha.setText(jTableCarreras.getValueAt(selectedCarrera, 1).toString());
+           editCarreraLugar.setText(jTableCarreras.getValueAt(selectedCarrera, 2).toString());
+           editCarreraParticipantes.setText(jTableCarreras.getValueAt(selectedCarrera, 3).toString());
+           filaSeleccionada.setText(Integer.toString(selectedCarrera));
+          refrescarTablaCarreras(); 
+          
     
+    
+    }//GEN-LAST:event_jButtonEditarCarreraActionPerformed
+
+    private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
+         String nombreEdit = editCarreraNombre.getText();
+         String posicion = filaSeleccionada.getText();
+         String lugarEdit = editCarreraLugar.getText();
+         String fechaEdit = editCarreraFecha.getText();
+         String participantesEdit = editCarreraParticipantes.getText();
+         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+         Date fechaDate = null;
+        try {
+            fechaDate = sdf.parse(fechaEdit);
+        } 
+        catch (ParseException ex) 
+        {
+            System.out.println(ex);
+        }
+        Carreras carrera = new Carreras(nombreEdit, fechaDate, lugarEdit, participantesEdit);
+        
+        LogicaNegocio.addCarrera(carrera);
+
+        int j = Integer.parseInt(posicion);
+        LogicaNegocio.getListaCarreras().remove(j);
+           
+          refrescarTablaCarreras();
+    }//GEN-LAST:event_jButtonAceptarActionPerformed
+
+    private void jButtonAceptarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarCorredorActionPerformed
+         String posicion = filaSeleccionadaCorredor.getText();   
+         String nombreEdit = editarCorredorNombre.getText(); 
+         String DNIedit = editarCorredorDNI.getText();  
+         String fechaEdit = editarCorredorFecha.getText();
+         String direccionEdit = editarCorredorDireccion.getText();
+         String telefonoEdit = editarCorredorTelefono.getText();
+         String DorsalEdit = editarCorredorDorsal.getText();
+         String carreraEdit = editarCorredorCarrera.getText();
+                 
+         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+         Date fechaDate = null;
+         String marcaEdit ="";
+         int dorsal= Integer.parseInt(DorsalEdit);
+        try {
+            fechaDate = sdf.parse(fechaEdit);
+        } 
+        catch (ParseException ex) 
+        {
+            System.out.println(ex);
+        }
+        
+        Corredor corredor = new Corredor(nombreEdit, DNIedit, fechaDate, direccionEdit, telefonoEdit, dorsal, carreraEdit, marcaEdit);       
+        LogicaNegocio.addCorredor(corredor);
+        int j = Integer.parseInt(posicion);
+        LogicaNegocio.getListaCorredores().remove(j);
+  
+         
+          refrescarTablaCorredores();
+    }//GEN-LAST:event_jButtonAceptarCorredorActionPerformed
+
+    private void jButtonEditarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarCorredorActionPerformed
+            jButtonAceptarCorredor.setEnabled(true);
+        int selectedCorredor = jTableCorredores.convertRowIndexToModel(jTableCorredores.getSelectedRow());
+           
+          editarCorredorNombre.setText(jTableCorredores.getValueAt(selectedCorredor, 0).toString());
+          editarCorredorDNI.setText(jTableCorredores.getValueAt(selectedCorredor, 1).toString());
+          editarCorredorFecha.setText(jTableCorredores.getValueAt(selectedCorredor, 2).toString());
+          editarCorredorDireccion.setText(jTableCorredores.getValueAt(selectedCorredor, 3).toString());
+          editarCorredorTelefono.setText(jTableCorredores.getValueAt(selectedCorredor, 4).toString());
+          editarCorredorDorsal.setText(jTableCorredores.getValueAt(selectedCorredor, 5).toString());
+          editarCorredorCarrera.setText(jTableCorredores.getValueAt(selectedCorredor, 6).toString());
+        
+         filaSeleccionadaCorredor.setText(Integer.toString(selectedCorredor));
+          System.out.print(selectedCorredor);
+          refrescarTablaCorredores(); 
+          
+          
+          
+ 
+    }//GEN-LAST:event_jButtonEditarCorredorActionPerformed
+
+        
                                                 
     /**
      * 
@@ -282,8 +574,36 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField editCarreraFecha;
+    private javax.swing.JTextField editCarreraLugar;
+    private javax.swing.JTextField editCarreraNombre;
+    private javax.swing.JTextField editCarreraParticipantes;
+    private javax.swing.JTextField editarCorredorCarrera;
+    private javax.swing.JTextField editarCorredorDNI;
+    private javax.swing.JTextField editarCorredorDireccion;
+    private javax.swing.JTextField editarCorredorDorsal;
+    private javax.swing.JTextField editarCorredorFecha;
+    private javax.swing.JTextField editarCorredorNombre;
+    private javax.swing.JTextField editarCorredorTelefono;
+    private javax.swing.JTextField filaSeleccionada;
+    private javax.swing.JTextField filaSeleccionadaCorredor;
+    private javax.swing.JButton jButtonAceptar;
+    private javax.swing.JButton jButtonAceptarCorredor;
+    private javax.swing.JButton jButtonEditarCarrera;
+    private javax.swing.JButton jButtonEditarCorredor;
     private javax.swing.JButton jButtonEliminarCarrera;
     private javax.swing.JButton jButtonEliminarCorredor;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
