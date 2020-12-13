@@ -163,10 +163,12 @@ public class JDialogCronometro extends javax.swing.JFrame implements Runnable{
         jButtonVuelta = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableTiempos = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblDisp1.setFont(new java.awt.Font("David Libre", 3, 70)); // NOI18N
+        lblDisp1.setFont(new java.awt.Font("Liberation Serif", 3, 70)); // NOI18N
         lblDisp1.setText("00:00:00");
 
         lblDisp2.setFont(new java.awt.Font("Digital-7 Mono", 3, 48)); // NOI18N
@@ -213,6 +215,13 @@ public class JDialogCronometro extends javax.swing.JFrame implements Runnable{
         ));
         jScrollPane2.setViewportView(jTableTiempos);
 
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("MS PGothic", 3, 13)); // NOI18N
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Inicia el cronómetro y selecciona un corredor en la tabla, \nel botón vuelta guardará el tiempo asociado al determinado corredor.");
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -221,10 +230,6 @@ public class JDialogCronometro extends javax.swing.JFrame implements Runnable{
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblDisp1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblDisp2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButtonStop, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnStart, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
@@ -232,7 +237,12 @@ public class JDialogCronometro extends javax.swing.JFrame implements Runnable{
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnReset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonVuelta, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblDisp1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDisp2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 245, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -248,11 +258,13 @@ public class JDialogCronometro extends javax.swing.JFrame implements Runnable{
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnStart)
                     .addComponent(btnReset))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonStop)
                     .addComponent(jButtonVuelta))
-                .addGap(158, 158, 158))
+                .addGap(71, 71, 71)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -267,7 +279,7 @@ public class JDialogCronometro extends javax.swing.JFrame implements Runnable{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 70, Short.MAX_VALUE))
         );
 
         pack();
@@ -302,9 +314,6 @@ public class JDialogCronometro extends javax.swing.JFrame implements Runnable{
        try 
        {
         int selectedCorredorTiempo = jTableTiempos.convertRowIndexToModel(jTableTiempos.getSelectedRow());
-        if (selectedCorredorTiempo<0){
-  
-     
        
          Corredor corredor ;
        String editMarca =lblDisp1.getText()+lblDisp2.getText();
@@ -313,16 +322,10 @@ public class JDialogCronometro extends javax.swing.JFrame implements Runnable{
         corredor = listaCorredoresTiempo.get(selectedCorredorTiempo);
         corredor.setMarca(editMarca);
         refrescarTablaTiempos();  
-       
-        }
-        else
-        {
-            
-        }
-          
+      
        } catch (ArrayIndexOutOfBoundsException e)
        {
-           System.out.print("keloke");
+           System.out.print("No hay ningun corredor seleccionado al que asignar un tiempo");
        }
       
        
@@ -373,8 +376,10 @@ public class JDialogCronometro extends javax.swing.JFrame implements Runnable{
     private javax.swing.JButton jButtonStop;
     private javax.swing.JButton jButtonVuelta;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableTiempos;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblDisp1;
     private javax.swing.JLabel lblDisp2;
     // End of variables declaration//GEN-END:variables
