@@ -124,5 +124,17 @@ public class Corredor {
       
     }
     
+    public String[] toArrayStringTiempo()
+    {
+       String [] c = new String[4];
+       c[0]= Integer.toString(dorsal);
+       c[1]= DNI;         
+       c[2]= carrera;
+       c[3]= marca;
+                
+       return c;
+                
+    }
+    
     
 }

@@ -123,6 +123,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jMenuItemAddCarrera = new javax.swing.JMenuItem();
         jMenuPrincipal = new javax.swing.JMenu();
         jMenuItemAddCorredor = new javax.swing.JMenuItem();
+        jMenuCrono = new javax.swing.JMenu();
+        jMenuCronometro = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar2.add(jMenu1);
@@ -415,6 +417,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuPrincipal);
 
+        jMenuCrono.setText("Cronometro");
+
+        jMenuCronometro.setText("Cronometro");
+        jMenuCronometro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCronometroActionPerformed(evt);
+            }
+        });
+        jMenuCrono.add(jMenuCronometro);
+
+        jMenuBar1.add(jMenuCrono);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -603,6 +617,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
  
     }//GEN-LAST:event_jButtonEditarCorredorActionPerformed
 
+    private void jMenuCronometroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCronometroActionPerformed
+     
+        JDialogCronometro dialogoCrono = new JDialogCronometro ();
+        dialogoCrono.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuCronometroActionPerformed
+
         
                                                 
     /**
@@ -678,6 +699,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenu jMenuCarrera;
+    private javax.swing.JMenu jMenuCrono;
+    private javax.swing.JMenuItem jMenuCronometro;
     private javax.swing.JMenuItem jMenuItemAddCarrera;
     private javax.swing.JMenuItem jMenuItemAddCorredor;
     private javax.swing.JMenu jMenuPrincipal;

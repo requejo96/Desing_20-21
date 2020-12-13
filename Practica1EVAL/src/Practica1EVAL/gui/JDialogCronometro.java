@@ -3,23 +3,61 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stopwatch;
-public class stopwatch extends javax.swing.JFrame implements Runnable{
+package Practica1EVAL.gui;
+
+import Practica1EVAL.dto.Carreras;
+import Practica1EVAL.dto.Corredor;
+import Practica1EVAL.logica.LogicaNegocio;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.table.DefaultTableModel;
+
+public class JDialogCronometro extends javax.swing.JFrame implements Runnable{
+    
+    private PantallaPrincipal pantallaprincipal;
     Thread t;
     int hcnt=0,mcnt=0,scnt=0,mscnt=0;
     String str="",nstr="",mstr="",dstr="";
     int cnt=0, cnt2=0;
     
+  
+    
 
     /**
      * Creates new form stopwatch
      */
-    public stopwatch() {
+    public JDialogCronometro() {
         initComponents();
         t=new Thread(this);
         reset();
+        refrescarTablaTiempos();
+      
         
     }
+
+    
+     private void refrescarTablaTiempos()
+    {
+    
+        DefaultTableModel dtm = new DefaultTableModel();
+        dtm.setColumnIdentifiers(new String[]{"Dorsal","DNI","Carrera","Marca",});
+        
+        List<Corredor> listaCorredores = LogicaNegocio.getListaCorredores();
+        
+        for(Corredor corredor : listaCorredores)
+        {
+        
+            dtm.addRow(corredor.toArrayStringTiempo());
+        
+        }
+        
+        jTableTiempos.setModel(dtm);
+    
+    }
+  
+  
  public void reset(){
      hcnt=0;mcnt=0;scnt=0;mscnt=0;cnt2=0;
      nstr="00:00:00";mstr="000";dstr="";
@@ -47,7 +85,7 @@ public class stopwatch extends javax.swing.JFrame implements Runnable{
          nstr+=":"+mcnt;
      } 
         if(scnt<10){
-         nstr+="0"+scnt;
+         nstr+=":0"+scnt;
          
      }
      else{
@@ -104,7 +142,7 @@ public class stopwatch extends javax.swing.JFrame implements Runnable{
  public void printToList(){
      cnt2++;
      dstr+="\n"+cnt2+") "+lblDisp1.getText()+" "+lblDisp2.getText()+"\n";
-    txtaList.setText(dstr);     
+      
 
  }
     /**
@@ -121,12 +159,14 @@ public class stopwatch extends javax.swing.JFrame implements Runnable{
         lblDisp2 = new javax.swing.JLabel();
         btnStart = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtaList = new javax.swing.JTextArea();
+        jButtonStop = new javax.swing.JButton();
+        jButtonVuelta = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableTiempos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblDisp1.setFont(new java.awt.Font("Digital-7 Mono", 3, 70)); // NOI18N
+        lblDisp1.setFont(new java.awt.Font("David Libre", 3, 70)); // NOI18N
         lblDisp1.setText("00:00:00");
 
         lblDisp2.setFont(new java.awt.Font("Digital-7 Mono", 3, 48)); // NOI18N
@@ -146,9 +186,32 @@ public class stopwatch extends javax.swing.JFrame implements Runnable{
             }
         });
 
-        txtaList.setColumns(20);
-        txtaList.setRows(5);
-        jScrollPane1.setViewportView(txtaList);
+        jButtonStop.setText("Stop");
+        jButtonStop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonStopActionPerformed(evt);
+            }
+        });
+
+        jButtonVuelta.setText("Vuelta");
+        jButtonVuelta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVueltaActionPerformed(evt);
+            }
+        });
+
+        jTableTiempos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableTiempos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -157,41 +220,48 @@ public class stopwatch extends javax.swing.JFrame implements Runnable{
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblDisp1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblDisp2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(lblDisp1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblDisp2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButtonStop, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnStart, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnReset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonVuelta, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 245, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDisp1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDisp2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDisp1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDisp2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnStart)
                     .addComponent(btnReset))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonStop)
+                    .addComponent(jButtonVuelta))
+                .addGap(158, 158, 158))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,8 +274,8 @@ public class stopwatch extends javax.swing.JFrame implements Runnable{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-       if(btnStart.getText().equals("Start")){  
-           btnStart.setText("Stop");
+
+            if(btnStart.getText().equals("Start")){
            cnt++;
            if(cnt==1){ 
                t.start();
@@ -214,21 +284,53 @@ public class stopwatch extends javax.swing.JFrame implements Runnable{
                t.resume();
            }
        }
-       else{
-           btnStart.setText("Start");
-          
-           printToList();
-           
-       }
+       
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         reset();
         t.suspend();
-        btnStart.setText("Start");
-        txtaList.setText("");
+      
+        
     }//GEN-LAST:event_btnResetActionPerformed
 
+    private void jButtonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStopActionPerformed
+        t.suspend();
+    }//GEN-LAST:event_jButtonStopActionPerformed
+
+    private void jButtonVueltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVueltaActionPerformed
+       try 
+       {
+        int selectedCorredorTiempo = jTableTiempos.convertRowIndexToModel(jTableTiempos.getSelectedRow());
+        if (selectedCorredorTiempo<0){
+  
+     
+       
+         Corredor corredor ;
+       String editMarca =lblDisp1.getText()+lblDisp2.getText();
+       
+       List<Corredor> listaCorredoresTiempo = LogicaNegocio.getListaCorredores();
+        corredor = listaCorredoresTiempo.get(selectedCorredorTiempo);
+        corredor.setMarca(editMarca);
+        refrescarTablaTiempos();  
+       
+        }
+        else
+        {
+            
+        }
+          
+       } catch (ArrayIndexOutOfBoundsException e)
+       {
+           System.out.print("keloke");
+       }
+      
+       
+       
+    }//GEN-LAST:event_jButtonVueltaActionPerformed
+
+    
+  
     /**
      * @param args the command line arguments
      */
@@ -246,20 +348,21 @@ public class stopwatch extends javax.swing.JFrame implements Runnable{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(stopwatch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogCronometro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(stopwatch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogCronometro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(stopwatch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogCronometro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(stopwatch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogCronometro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new stopwatch().setVisible(true);
+                new JDialogCronometro().setVisible(true);
             }
         });
     }
@@ -267,10 +370,12 @@ public class stopwatch extends javax.swing.JFrame implements Runnable{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnStart;
+    private javax.swing.JButton jButtonStop;
+    private javax.swing.JButton jButtonVuelta;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTableTiempos;
     private javax.swing.JLabel lblDisp1;
     private javax.swing.JLabel lblDisp2;
-    private javax.swing.JTextArea txtaList;
     // End of variables declaration//GEN-END:variables
 }
