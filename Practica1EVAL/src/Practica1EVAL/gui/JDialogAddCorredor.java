@@ -42,6 +42,7 @@ public class JDialogAddCorredor extends javax.swing.JDialog {
         group.add(jTextFieldDNI, StringValidators.REQUIRE_NON_EMPTY_STRING);
         group.add(jTextFieldDireccion, StringValidators.REQUIRE_NON_EMPTY_STRING);
         group.add(jTextFieldTelefono, StringValidators.REQUIRE_NON_EMPTY_STRING);
+     
       
         
         validationPanelCorredor.addChangeListener(new ChangeListener() {
@@ -265,6 +266,10 @@ public class JDialogAddCorredor extends javax.swing.JDialog {
         String direccion = jTextFieldDireccion.getText();
         int dorsal = (Integer)jSpinnerDorsal.getValue();
         String carrera = jListCarreras.getSelectedValue();
+        if (jListCarreras.getSelectedValue()==null)
+        {
+            carrera = "Sin carrera";
+        }
             
         
         String marca = "Sin marca";
