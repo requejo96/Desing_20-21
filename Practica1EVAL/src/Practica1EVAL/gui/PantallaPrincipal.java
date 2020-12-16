@@ -39,7 +39,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     {
     
         DefaultTableModel dtm = new DefaultTableModel();
-        dtm.setColumnIdentifiers(new String[]{"Nombre","DNI","Fecha Nacimiento","Direccion","Telf. Contacto","Dorsal","Carrera","Marca"});
+        dtm.setColumnIdentifiers(new String[]{"Nombre","DNI","Fecha Nacimiento","Direccion","Telf. Contacto","Dorsal","Carrera","Marca","Equipo"});
         
         List<Corredor> listaCorredores = LogicaNegocio.getListaCorredores();
         
@@ -120,6 +120,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jButtonAceptarCorredor = new javax.swing.JButton();
         filaSeleccionadaCorredor = new javax.swing.JTextField();
         jButtonEditarCorredor = new javax.swing.JButton();
+        jLabelEditarEquipo = new javax.swing.JLabel();
+        editarCorredorEquipo = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCarrera = new javax.swing.JMenu();
         jMenuItemAddCarrera = new javax.swing.JMenuItem();
@@ -127,6 +129,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jMenuItemAddCorredor = new javax.swing.JMenuItem();
         jMenuCrono = new javax.swing.JMenu();
         jMenuCronometro = new javax.swing.JMenuItem();
+        jMenuEquipos = new javax.swing.JMenu();
+        jMenuItemEquipo = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar2.add(jMenu1);
@@ -253,6 +257,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabelEditarEquipo.setText("Equipo");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -308,22 +314,24 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel10))
                 .addGap(53, 53, 53)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(editarCorredorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(editarCorredorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelEditarEquipo))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(editarCorredorDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(62, 62, 62)
                         .addComponent(jLabel11))
                     .addComponent(editarCorredorDorsal, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(editarCorredorCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
                         .addComponent(jButtonAceptarCorredor)
-                        .addGap(45, 45, 45)
-                        .addComponent(filaSeleccionadaCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(filaSeleccionadaCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editarCorredorCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                    .addComponent(editarCorredorEquipo))
                 .addGap(269, 269, 269))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -358,42 +366,38 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                     .addComponent(editCarreraParticipantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editCarreraFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
+                .addGap(41, 41, 41)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPaneCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPaneCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonEditarCorredor)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonEliminarCorredor)))
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(editarCorredorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(editarCorredorDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel5)
-                            .addComponent(editarCorredorCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel9)
-                            .addComponent(editarCorredorDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(editarCorredorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonAceptarCorredor)
-                            .addComponent(filaSeleccionadaCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(7, 7, 7)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonEditarCorredor)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonEliminarCorredor)))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editarCorredorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(editarCorredorDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel5)
+                    .addComponent(editarCorredorCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel9)
+                    .addComponent(editarCorredorDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editarCorredorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEditarEquipo)
+                    .addComponent(editarCorredorEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel10)
                     .addComponent(editarCorredorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editarCorredorDorsal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editarCorredorDorsal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAceptarCorredor)
+                    .addComponent(filaSeleccionadaCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
@@ -433,6 +437,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuCrono);
 
+        jMenuEquipos.setText("Equipos");
+
+        jMenuItemEquipo.setText("Equipos");
+        jMenuItemEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEquipoActionPerformed(evt);
+            }
+        });
+        jMenuEquipos.add(jMenuItemEquipo);
+
+        jMenuBar1.add(jMenuEquipos);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -448,7 +464,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addGap(0, 19, Short.MAX_VALUE))
         );
 
         pack();
@@ -554,6 +570,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
          String telefonoEdit = editarCorredorTelefono.getText();
          String DorsalEdit = editarCorredorDorsal.getText();
          String carreraEdit = editarCorredorCarrera.getText();
+         //añado el String para modificar el campo editarEquipo
+         String equipoEdit = editarCorredorEquipo.getText();
                  
          SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
          Date fechaDate = null;
@@ -567,7 +585,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             System.out.println(ex);
         }
         
-        Corredor corredor = new Corredor(nombreEdit, DNIedit, fechaDate, direccionEdit, telefonoEdit, dorsal, carreraEdit, marcaEdit);       
+        //añado el equipo al constructor
+        Corredor corredor = new Corredor(nombreEdit, DNIedit, fechaDate, direccionEdit, telefonoEdit, dorsal, carreraEdit, marcaEdit, equipoEdit);       
         LogicaNegocio.addCorredor(corredor);
         int j = Integer.parseInt(posicion);
         LogicaNegocio.getListaCorredores().remove(j);
@@ -583,6 +602,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
           editarCorredorTelefono.setText("");
           editarCorredorDorsal.setText("");
           editarCorredorCarrera.setText("");
+          //dejo vacio el campo editar equipo para que no haya problemas y quede bien
+          editarCorredorEquipo.setText("");
           filaSeleccionadaCorredor.setText("");
           
           editarCorredorCarrera.setEditable(false);
@@ -592,6 +613,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
           editarCorredorTelefono.setEditable(false);
           editarCorredorFecha.setEditable(false);
           editarCorredorNombre.setEditable(false);
+          //dejo sin poder editarse el campo equipo para que si no esta seleccionado ninguno no de problemas
+          editarCorredorEquipo.setEditable(false);
           
     }//GEN-LAST:event_jButtonAceptarCorredorActionPerformed
 
@@ -606,6 +629,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
           editarCorredorTelefono.setText(jTableCorredores.getValueAt(selectedCorredor, 4).toString());
           editarCorredorDorsal.setText(jTableCorredores.getValueAt(selectedCorredor, 5).toString());
           editarCorredorCarrera.setText(jTableCorredores.getValueAt(selectedCorredor, 6).toString());
+          //le pongo al campo editarEquipo los datos que tiene ese corredor
+          editarCorredorEquipo.setText(jTableCorredores.getValueAt(selectedCorredor, 8).toString());
         
          filaSeleccionadaCorredor.setText(Integer.toString(selectedCorredor));
    
@@ -621,6 +646,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
           editarCorredorTelefono.setEditable(true);
           editarCorredorFecha.setEditable(true);
           editarCorredorNombre.setEditable(true);
+          //añado que se pueda editar el campoEquipo
+           editarCorredorEquipo.setEditable(true);
           
           
  
@@ -632,6 +659,15 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         dialogoCrono.setVisible(true);
         
     }//GEN-LAST:event_jMenuCronometroActionPerformed
+
+    
+    //añadimos el menu para ir a los equipos
+    private void jMenuItemEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEquipoActionPerformed
+        
+       JDialogEquipos dialogoEquipo = new JDialogEquipos(this, true);
+       dialogoEquipo.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItemEquipoActionPerformed
 
         
                                                 
@@ -681,6 +717,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField editarCorredorDNI;
     private javax.swing.JTextField editarCorredorDireccion;
     private javax.swing.JTextField editarCorredorDorsal;
+    private javax.swing.JTextField editarCorredorEquipo;
     private javax.swing.JTextField editarCorredorFecha;
     private javax.swing.JTextField editarCorredorNombre;
     private javax.swing.JTextField editarCorredorTelefono;
@@ -703,6 +740,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelEditarEquipo;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -710,8 +748,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuCarrera;
     private javax.swing.JMenu jMenuCrono;
     private javax.swing.JMenuItem jMenuCronometro;
+    private javax.swing.JMenu jMenuEquipos;
     private javax.swing.JMenuItem jMenuItemAddCarrera;
     private javax.swing.JMenuItem jMenuItemAddCorredor;
+    private javax.swing.JMenuItem jMenuItemEquipo;
     private javax.swing.JMenu jMenuPrincipal;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPaneCarreras;

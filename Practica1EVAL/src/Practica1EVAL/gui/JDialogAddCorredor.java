@@ -120,6 +120,8 @@ public class JDialogAddCorredor extends javax.swing.JDialog {
         jScrollPane = new javax.swing.JScrollPane();
         jListCarreras = new javax.swing.JList<>();
         jSpinnerDorsal = new javax.swing.JSpinner();
+        jLabelEquipo = new javax.swing.JLabel();
+        jTextFieldEquipo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -158,6 +160,8 @@ public class JDialogAddCorredor extends javax.swing.JDialog {
 
         jSpinnerDorsal.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
+        jLabelEquipo.setText("Equipo:");
+
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
@@ -165,6 +169,7 @@ public class JDialogAddCorredor extends javax.swing.JDialog {
             .addGroup(jPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelEquipo)
                     .addComponent(jLabelCarrera)
                     .addComponent(jLabelDorsal)
                     .addComponent(jLabelFeNac)
@@ -172,7 +177,7 @@ public class JDialogAddCorredor extends javax.swing.JDialog {
                     .addComponent(jLabelNombre1)
                     .addComponent(jLabelDireccion)
                     .addComponent(jLabelTelefono))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
@@ -181,8 +186,9 @@ public class JDialogAddCorredor extends javax.swing.JDialog {
                         .addComponent(jTextFieldTelefono)
                         .addComponent(jSpinnerFeNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinnerDorsal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addComponent(jSpinnerDorsal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldEquipo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,7 +223,11 @@ public class JDialogAddCorredor extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
                         .addComponent(jLabelCarrera)
                         .addGap(22, 22, 22)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEquipo))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -238,20 +248,15 @@ public class JDialogAddCorredor extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 104, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButtonAlta)
-                                .addGap(45, 45, 45))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(validationPanelCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25))))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButtonAlta)
+                        .addGap(45, 45, 45))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(validationPanelCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))))
         );
 
         pack();
@@ -266,6 +271,8 @@ public class JDialogAddCorredor extends javax.swing.JDialog {
         String direccion = jTextFieldDireccion.getText();
         int dorsal = (Integer)jSpinnerDorsal.getValue();
         String carrera = jListCarreras.getSelectedValue();
+        //sacamos el equipo del TextField
+        String equipo = jTextFieldEquipo.getText();
         if (jListCarreras.getSelectedValue()==null)
         {
             carrera = "Sin carrera";
@@ -273,7 +280,9 @@ public class JDialogAddCorredor extends javax.swing.JDialog {
             
         
         String marca = "Sin marca";
-        Corredor corredor = new Corredor(nombre, DNI, FeNac, direccion, telefono,dorsal,carrera, marca);
+        
+        //Añadimos el equipo al constructor
+        Corredor corredor = new Corredor(nombre, DNI, FeNac, direccion, telefono,dorsal,carrera, marca, equipo);
         
         LogicaNegocio.addCorredor(corredor);
         
@@ -289,6 +298,7 @@ public class JDialogAddCorredor extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelDNI;
     private javax.swing.JLabel jLabelDireccion;
     private javax.swing.JLabel jLabelDorsal;
+    private javax.swing.JLabel jLabelEquipo;
     private javax.swing.JLabel jLabelFeNac;
     private javax.swing.JLabel jLabelNombre1;
     private javax.swing.JLabel jLabelTelefono;
@@ -299,6 +309,7 @@ public class JDialogAddCorredor extends javax.swing.JDialog {
     private javax.swing.JSpinner jSpinnerFeNac;
     private javax.swing.JTextField jTextFieldDNI;
     private javax.swing.JTextField jTextFieldDireccion;
+    private javax.swing.JTextField jTextFieldEquipo;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldTelefono;
     private org.netbeans.validation.api.ui.swing.ValidationPanel validationPanelCorredor;
