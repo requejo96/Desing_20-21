@@ -27,21 +27,22 @@ public class NewJFrameColorin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jpanelComponente1 = new Componente.JpanelComponente();
+        jpanelComponente2 = new Componente.JpanelComponente();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jpanelComponente1.setColor("");
+        jpanelComponente2.setColor("azul");
+        jpanelComponente2.setName(""); // NOI18N
 
-        javax.swing.GroupLayout jpanelComponente1Layout = new javax.swing.GroupLayout(jpanelComponente1);
-        jpanelComponente1.setLayout(jpanelComponente1Layout);
-        jpanelComponente1Layout.setHorizontalGroup(
-            jpanelComponente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jpanelComponente2Layout = new javax.swing.GroupLayout(jpanelComponente2);
+        jpanelComponente2.setLayout(jpanelComponente2Layout);
+        jpanelComponente2Layout.setHorizontalGroup(
+            jpanelComponente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 306, Short.MAX_VALUE)
         );
-        jpanelComponente1Layout.setVerticalGroup(
-            jpanelComponente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 205, Short.MAX_VALUE)
+        jpanelComponente2Layout.setVerticalGroup(
+            jpanelComponente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 219, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -49,16 +50,16 @@ public class NewJFrameColorin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jpanelComponente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(jpanelComponente2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jpanelComponente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addComponent(jpanelComponente2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         pack();
@@ -100,6 +101,6 @@ public class NewJFrameColorin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Componente.JpanelComponente jpanelComponente1;
+    private Componente.JpanelComponente jpanelComponente2;
     // End of variables declaration//GEN-END:variables
 }
